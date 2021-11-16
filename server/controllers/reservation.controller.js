@@ -1,4 +1,5 @@
 const Reservation = require("../models/reservation.model");
+const Listing = require("../models/listing.model");
 
 const reservationController = {
   index: (req, rsp) => {
@@ -13,7 +14,7 @@ const reservationController = {
   },
 
   findById: (req, rsp) => {
-    Reservation.findByPk(req.params.id)
+    Reservation.findByPk(req.params.id, {include: Listing})
       .then(reservation => {
         if(reservation === null){
           rsp.json({error: "Not found"});
@@ -91,6 +92,24 @@ const reservationController = {
       });
   },
 
+  updateMultiple: (req, rsp) => {
+    if(typeof req.body !== "object"
+      || !("query" in req.body)
+      || !("newValues" in req.body)
+    ){
+      return rsp.json(queryFormatError);
+    }
+    Reservation.update(req.body.newValues, {where: req.body.query})
+      .then(recordsUpdated => {
+        const numRecordsUpdated = recordsUpdated[0];
+        rsp.json({records_updated: numRecordsUpdated});
+      })
+      .catch(e => {
+        console.error(e);
+        rsp.json({error: e});
+      });
+  },
+
 };
 
 const generateId = async () => {
@@ -119,5 +138,13 @@ const calculateNights = (startDate, endDate) => {
     return null;
   }
 };
+
+const queryFormatError = {
+  error: "Request body formatted incorrectly.  Must include \"query\" and \"newValues\" properties.  See example format.",
+  example_format: {
+    query: {all: "desired", query: "terms"},
+    newValues: {values: "to", be: "inserted"}
+  }
+}
 
 module.exports = reservationController;

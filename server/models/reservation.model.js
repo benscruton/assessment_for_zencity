@@ -55,4 +55,10 @@ Reservation.init({
   modelName: "reservation"
 });
 
+const Listing = require("./listing.model");
+Listing.hasMany(Reservation, {
+  foreignKey: "listingId"
+});
+Reservation.belongsTo(Listing);
+
 module.exports = Reservation;
