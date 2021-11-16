@@ -25,6 +25,10 @@ Reservation.init({
     type: DataTypes.TEXT,
     allowNull: true
   },
+  guest_phone:{
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
   is_rewards_member: {
     type: DataTypes.INTEGER,
     allowNull: false
@@ -37,6 +41,14 @@ Reservation.init({
     type: DataTypes.INTEGER,
     allowNull: false
   },
+  check_in_date: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  check_out_date: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  }
 },
 {
   sequelize,
