@@ -1,0 +1,4 @@
+.env
+**/node_modules
+mock-data.sqlite
+orig-mock-data.sqlite
