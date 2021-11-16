@@ -2,3 +2,4 @@
 **/node_modules
 mock-data.sqlite
 orig-mock-data.sqlite
+mock-data.sqlite-journal
