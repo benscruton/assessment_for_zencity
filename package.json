@@ -8,5 +8,9 @@
   },
   "devDependencies": {
     "sequelize-cli": "^6.3.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC"
 }

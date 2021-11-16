@@ -55,15 +55,4 @@ Listing.init({
   modelName: "listing"
 });
 
-// const main = async () => {
-  // Listing.findAll()
-  //   .then(list => console.log(list[0].id))
-  //   .catch(e => {
-  //     console.error(e);
-  //     return "error";
-  //   });
-  // console.log("this is in listing.model");
-// };
-// main();
-
 module.exports = Listing;

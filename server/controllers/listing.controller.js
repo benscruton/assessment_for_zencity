@@ -23,9 +23,10 @@ const listingController = {
             []
           );
           return listing;
-        }).filter(listing => 
+        }) // For all listings with amenities, separates into an array
+        .filter(listing => 
           listing.amenities.includes(req.params.amenity)
-        );
+        ); // Returns listings whose array includes the specified amenity
         rsp.json(filteredList);
       })
       .catch(e => {

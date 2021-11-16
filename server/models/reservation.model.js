@@ -55,6 +55,7 @@ Reservation.init({
   modelName: "reservation"
 });
 
+// Join with listings table:
 const Listing = require("./listing.model");
 Listing.hasMany(Reservation, {
   foreignKey: "listingId"

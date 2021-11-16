@@ -109,7 +109,6 @@ const reservationController = {
         rsp.json({error: e});
       });
   },
-
 };
 
 const generateId = async () => {
@@ -129,8 +128,7 @@ const calculateNights = (startDate, endDate) => {
   try{
     startDate = new Date(startDate);
     endDate = new Date(endDate);
-    let diff = endDate - startDate;
-    diff += 4000; // add about an hour to avoid daylight savings wonkiness
+    const diff = endDate - startDate;
     const millisecondsPerDay = 1000 * 60 * 60 * 24;
     return Math.floor(diff / millisecondsPerDay);
   }

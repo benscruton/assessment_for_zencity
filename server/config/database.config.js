@@ -5,9 +5,13 @@ const sequelize = new Sequelize({
   storage: "./mock-data.sqlite",
   define: {
     timestamps: false
-  }
+  },
+  logging: false
 });
 
-console.log("running database config");
+// Check database connection and log status
+sequelize.authenticate()
+  .then(() => console.log("Database connection established"))
+  .catch(e => console.log(`Database connection failed. Error message:\n\n${e}`));
 
 module.exports = sequelize;
