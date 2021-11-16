@@ -2,16 +2,14 @@ const Listing = require("../models/listing.model");
 
 const listingController = {
   index: (req, rsp) => {
-    Listing.findAll()
+    Listing.findAll({where: req.query})
       .then(data => {
-        rsp.json({message: "ok", results: data});
+        rsp.json(data);
       })
       .catch(e => {
         console.error(e);
         rsp.json({error: e});
       });
-      
-    // rsp.json({message: "ok", source: "test.controller.js"});
   },
 };
 

@@ -3,13 +3,13 @@ const router = require("express").Router();
 
 //   THESE WE'LL PUT BACK IN EVENTUALLY:
 const listingRoutes = require("./listing.routes");
-// const reservationRoutes = require("./reservation.roustes");
+const reservationRoutes = require("./reservation.routes");
 
 const testRoutes = require("./test.routes");
 
 //   ADD THESE BACK TOO:
 router.use("/api/listings", listingRoutes);
-// router.use("/api/reservations", reservationRoutes);
+router.use("/api/reservations", reservationRoutes);
 
 router.use("/api/test", testRoutes);
 
