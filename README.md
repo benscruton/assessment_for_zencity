@@ -97,4 +97,4 @@ The goal of this exercise is to design a simple API (REST or GraphQL) to an exis
 
 - OTHER NOTES:
 
-    - I wasn't totally sure how the IDs were generated, but they appeared to be 16-digit hashes and SQLite wasn't creating IDs on its own, so I wrote a function (in reservation.controller.js) to create an ID and then double-check to make sure it isn't already in use.  This could easily be removed if there is a more streamlined way of ID creation on the database side.
+    - I wasn't sure how the IDs for the original data were generated, but they appeared to be 16-digit hashes and SQLite wasn't creating IDs on its own, so I wrote a function (in reservation.controller.js) to create an ID and then double-check to make sure it isn't already in use.  This could easily be removed if there is a more streamlined way of ID creation on the database side.
