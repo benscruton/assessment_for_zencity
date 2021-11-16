@@ -120,7 +120,7 @@ const generateId = async () => {
   const itemWithThisId = await Reservation.findByPk(id);
   if(itemWithThisId !== null){
     id = await generateId();
-  }
+  } // If the id already exists, try again and make a new one
   return id;
 }
 
