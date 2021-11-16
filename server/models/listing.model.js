@@ -44,6 +44,10 @@ Listing.init({
   base_price: {
     type: DataTypes.DOUBLE,
     allowNull: false
+  },
+  amenities: {
+    type: DataTypes.TEXT,
+    allowNull: true
   }
 },
 {

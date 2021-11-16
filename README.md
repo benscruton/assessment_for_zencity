@@ -7,24 +7,24 @@ The goal of this exercise is to design a simple API (REST or GraphQL) to an exis
 ### Requirements:
 
 - SQL:
-    - Add a way to store “check-in” and “check-out” dates for reservations
-    - Add a way to link reservations and listings
-    - Add a way to store a listing's street address ZIP code
-    - Add a way to store common amenities sometimes provided by a listing
+    [x] Add a way to store “check-in” and “check-out” dates for reservations
+    [ ] Add a way to link reservations and listings
+    [x] Add a way to store a listing's street address ZIP code
+    [x] Add a way to store common amenities sometimes provided by a listing
         - (e.g., “Jacuzzi”, “Fireplace”, “Pool”)
         
 - HTTP(s):
     - GET:
-        - Capability to list all reservations
-            - Include capability to filter by fields/attributes
+        [x] Capability to list all reservations
+            [x] Include capability to filter by fields/attributes
                 - (e.g. `/reservations?created_at=2021-10-01&status=pending`)
         
-        - Capability to return one reservation
-            - Include a field total nights booked (e.g., October 1-4 is a 3 night stay)
+        [x] Capability to return one reservation
+            [x] Include a field total nights booked (e.g., October 1-4 is a 3 night stay)
     - POST/PUT:
-        - Create a new reservation
-        - Modify one reservation
-        - Modify multiple reservations
+        [x] Create a new reservation
+        [x] Modify one reservation
+        [ ] Modify multiple reservations
 
 
 

@@ -6,7 +6,8 @@ router.route("/")
   .post(reservationController.create);
 
 router.route("/:id")
-  .get(reservationController.findById);
+  .get(reservationController.findById)
+  .put(reservationController.update);
 
 
 module.exports = router;

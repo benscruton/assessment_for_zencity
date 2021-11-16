@@ -36,18 +36,53 @@ const reservationController = {
   },
 
   create: (req, rsp) => {
-    console.log(req.body);
     const r = Reservation.build(req.body);
     generateId()
       .then(id => {
         r.id = id;
         r.save()
           .then(reservation => {
-            rsp.json({yourReservation: reservation});
+            rsp.json(reservation.toJSON());
           })
           .catch(e => {
             console.error(e);
             rsp.json({error: e});
+          });
+      })
+      .catch(e => {
+        console.error(e);
+        rsp.json({error: e});
+      });
+  },
+
+  update: (req, rsp) => {
+    Reservation.findByPk(req.params.id)
+      .then(reservation => {
+        if(reservation === null){
+          return rsp.json({error: "Not found"});
+        }
+        const fieldsNotUpdated = [];
+        for(let key in req.body){
+          if(key in reservation && key !== "id"){
+            reservation[key] = req.body[key];
+          }
+          else{
+            fieldsNotUpdated.push(key);
+          }
+        }
+        reservation.save()
+          .then(updatedReservation => {
+            const output = {
+              updated_reservation: updatedReservation.toJSON()
+            };
+            if(fieldsNotUpdated.length){
+              output.fields_not_updated = fieldsNotUpdated;
+            }
+            rsp.json(output);
+          })
+          .catch(e => {
+            console.error(e);
+            rsp.json({error: e}); 
           });
       })
       .catch(e => {
