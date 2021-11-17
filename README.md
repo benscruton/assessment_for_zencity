@@ -61,30 +61,30 @@ The goal of this exercise is to design a simple API (REST or GraphQL) to an exis
     
 - API ROUTES:
     - GET:
-        - "/api/reservations" will list all reservations
+        - `/api/reservations` will list all reservations
             - It also filters based on query parameters in the route
             - i.e. "/api/reservations?guests_count=3&is_rewards_member=1" will return all reservations made by rewards members with 3 guests
             
-        - "/api/reservations/<id>" will return a single reservation
+        - `/api/reservations/:id` will return a single reservation
             - When returning an individual reservation, two additional pieces of information are also included beyond what shows up in the list of all reservations:
                 - The number of nights booked: this is not stored in the database but is calculated on the server side after retrieving the record but before returning the result
                 - The associated listing, if applicable.  I decided to opt for eager loading in cases where the individual reservation is being accessed.
 
-        - "/api/listings" also returns all listings
+        - `/api/listings` also returns all listings
             - This route also filters based on route query parameters, like the reservations
             - This route wasn't strictly speaking asked for, but I created it while working on other methods so I decided to leave it in
             
-        - "/api/listings/amenities/<amenity>" returns a list of all listings that include the specified amenity, assuming that the amenities are listed as a string with amenities comma-separated and no spaces between them.
+        - `/api/listings/amenities/:amenity` returns a list of all listings that include the specified amenity, assuming that the amenities are listed as a string with amenities comma-separated and no spaces between them.
         
     - POST:
-        - "/api/reservations" as a post request with a valid body will create a new reservation in the database.
+        - `/api/reservations` as a post request with a valid body will create a new reservation in the database.
         
     - PUT:
-        - "/api/reservations/<id>" as a put request will update the record in question
+        - `/api/reservations/:id` as a put request will update the record in question
             - Only the fields that are being changed need to be included in the put request; the rest will not be altered or deleted
             - If there are additional fields that the model doesn't recognize, the server will not attempt to add these fields to the database.  If any such fields are included, the JSON response will include an additional attribute "fieldsNotUpdated" that includes an array with the list of fields it was unable to update.  Any valid fields will still update.
             
-        - "/api/reservations" as a put request will update multiple records simultaneously, provided the req.body is an object that includes the following attributes:
+        - `/api/reservations` as a put request will update multiple records simultaneously, provided the req.body is an object that includes the following attributes:
             - query: an object containing identifying information for all records to be updated
             - newValues: an object containing the new information that these records should have after the update.
             - example: to find all reservations of 3 guests where no last name was submitted, and enter the string "unknown" as the last name:
