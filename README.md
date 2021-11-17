@@ -81,7 +81,7 @@ The goal of this exercise is to design a simple API (REST or GraphQL) to an exis
         
     - PUT:
         - `/api/reservations/:id` as a put request will update the record in question
-            - Only the fields that are being changed need to be included in the put request; the rest will not be altered or deleted
+            - Only the fields that are being changed need to be included in the request body; the rest will not be altered or deleted
             - If there are additional fields that the model doesn't recognize, the server will not attempt to add these fields to the database.  If any such fields are included, the JSON response will include an additional attribute "fieldsNotUpdated" that includes an array with the list of fields it was unable to update.  Any valid fields will still update.
             
         - `/api/reservations` as a put request will update multiple records simultaneously, provided the req.body is an object that includes the following attributes:
